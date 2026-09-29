@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../backend/js/index.js" defer></script>
+</head>
+
+<body>
+    <div>
+        <h1>Restaurant</h1>
+        
+        <h2>Essensliste</h2>
+        <div>
+            <button type="button" id="addFood">Essen hinzufügen</button><br><br>
+        </div>
+        <table id="food-table">
+            <thead>
+                <th>Pos</th>
+                <th>Gericht</th>
+                <th>Preis</th>
+                <th>Vegetarisch</th>
+            </thead>
+            <tr>
+                <td>1</td>
+                <td>Pizza mit Schinken</td>
+                <td>10€</td>
+                <td>Nein</td>
+                <td><button type="button" id="addToOrder">Add to Order</button></td>
+                <td><button type="button" id="editOrder">Edit</button></td>
+                <td><button type="button" id="deleteOrder">Delete</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Salat</td>
+                <td>5€</td>
+                <td>Ja</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Steak</td>
+                <td>15€</td>
+                <td>Nein</td>
+            </tr>
+        </table>
+        
+        <h2>Bestellübersicht</h2>
+        <table id="food-table">
+            <thead>
+                <tr>
+                    <th>Menge</th>
+                    <th>Gericht</th>
+                    <th>Preis</th>
+                    <th>Gesamt</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Pizza mit Schinken</td>
+                    <td>10€</td>
+                    <td>10€</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Salat</td>
+                    <td>5€</td>
+                    <td>15€</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="addFoodWindow" class="window">
+        <div class="window-content">
+            <h2>Essen bearbeiten</h2>
+            <form id="edit-form">
+                <label for="meal">Gericht:</label>
+                <input type="text" id="meal" name="meal" required><br><br>
+                <lable for="price">Preis:</label>
+                <input type="number" id="price" name="price" required><br><br>
+                <label for="vegetable">Vegetarisch:</label>
+                <input type="checkbox" id="vegetable" name="vegetable"><br><br>
+                <button type="submit">Speichern</button>
+                <button type="button" id="closeWindow">Abbrechen</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
