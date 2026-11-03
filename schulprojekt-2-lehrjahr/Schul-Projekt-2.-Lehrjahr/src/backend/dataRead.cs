@@ -1,32 +1,31 @@
 using System;
+using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 namespace Ueb_Datenbankzugriff
 {
     internal class dataRead
     {
-        public void DataRead(MySqlConnection con)
+        public List<Gericht> GetAlleGerichte(MySqlConnection con)
         {
-            string cmdString = "SELECT * FROM Essensliste";
+            var gerichte = new List<Gericht>();
+            string cmdString = "SELECT listenid, essensname, preis, vegetarisch FROM Essensliste";
 
-            MySqlCommand cmd = new MySqlCommand(cmdString, con);
-            MySqlDataReader reader = cmd.ExecuteReader();
+            using var cmd = new MySqlCommand(cmdString, con);
+            using var reader = cmd.ExecuteReader();
 
-            if (reader.HasRows)
+            while (reader.Read())
             {
-                while (reader.Read())
+                gerichte.Add(new Gericht
                 {
-                    string gericht = Convert.ToString(reader["Gericht"]);
-                    string preis = Convert.ToString(reader["Preis"]);
-                    string vegetarisch = Convert.ToString(reader["Vegetarisch"]);
+                    Id = Convert.ToInt32(reader["listenid"]),
+                    Name = Convert.ToString(reader["essensname"]) ?? "",
+                    Preis = Convert.ToDecimal(reader["preis"]),
+                    Vegetarisch = Convert.ToBoolean(reader["vegetarisch"])
+                });
+            }
 
-                    Console.WriteLine("{0} {1} {2}", gericht, preis, vegetarisch);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Keine Daten gefunden.");
-            }
+            return gerichte;
         }
     }
 }

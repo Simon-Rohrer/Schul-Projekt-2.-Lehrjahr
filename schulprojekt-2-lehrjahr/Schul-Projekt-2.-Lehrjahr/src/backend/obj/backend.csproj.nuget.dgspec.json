@@ -1,31 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\code\\schulprojekt-2-lehrjahr\\Schul-Projekt-2.-Lehrjahr\\src\\backend\\backend.csproj": {}
+    "/Users/simonrohrer/Documents/code/2. Lehrjahr Projekt neu/schulprojekt-2-lehrjahr/Schul-Projekt-2.-Lehrjahr/src/backend/backend.csproj": {}
   },
   "projects": {
-    "C:\\code\\schulprojekt-2-lehrjahr\\Schul-Projekt-2.-Lehrjahr\\src\\backend\\backend.csproj": {
+    "/Users/simonrohrer/Documents/code/2. Lehrjahr Projekt neu/schulprojekt-2-lehrjahr/Schul-Projekt-2.-Lehrjahr/src/backend/backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\code\\schulprojekt-2-lehrjahr\\Schul-Projekt-2.-Lehrjahr\\src\\backend\\backend.csproj",
+        "projectUniqueName": "/Users/simonrohrer/Documents/code/2. Lehrjahr Projekt neu/schulprojekt-2-lehrjahr/Schul-Projekt-2.-Lehrjahr/src/backend/backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\code\\schulprojekt-2-lehrjahr\\Schul-Projekt-2.-Lehrjahr\\src\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\SRR\\.nuget\\packages\\",
-        "outputPath": "C:\\code\\schulprojekt-2-lehrjahr\\Schul-Projekt-2.-Lehrjahr\\src\\backend\\obj\\",
+        "projectPath": "/Users/simonrohrer/Documents/code/2. Lehrjahr Projekt neu/schulprojekt-2-lehrjahr/Schul-Projekt-2.-Lehrjahr/src/backend/backend.csproj",
+        "packagesPath": "/Users/simonrohrer/.nuget/packages/",
+        "outputPath": "/Users/simonrohrer/Documents/code/2. Lehrjahr Projekt neu/schulprojekt-2-lehrjahr/Schul-Projekt-2.-Lehrjahr/src/backend/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\SRR\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/simonrohrer/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
+          "/usr/local/share/dotnet/sdk/7.0.317/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,13 +34,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net7.0": {
@@ -66,30 +56,15 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.20, 7.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.20, 7.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.20, 7.0.20]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.20, 7.0.20]"
-            }
-          ],
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.317/RuntimeIdentifierGraph.json"
         }
       }
     }

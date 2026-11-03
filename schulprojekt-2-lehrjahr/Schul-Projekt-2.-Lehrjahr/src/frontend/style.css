@@ -30,7 +30,7 @@ h2 {
     padding: 0.5em;
 }
 
-#addFoodWindow {
+#addFoodWindow, #editFoodWindow, #deleteFoodWindow  {
     display: none;
     position: fixed;
     top: 50%;
