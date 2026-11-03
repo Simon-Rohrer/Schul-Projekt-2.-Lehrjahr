@@ -2,7 +2,8 @@ using Ueb_Datenbankzugriff;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// CORS
+// CORS erlauben, damit das Frontend anfragen darf
+builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
