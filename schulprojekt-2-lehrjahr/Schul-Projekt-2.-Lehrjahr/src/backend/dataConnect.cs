@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 
 namespace Restaurant
 {
-    internal class dataConnect
+    internal class DataConnect
     {
         public MySqlConnection GetConnection()
         {

@@ -4,11 +4,11 @@ using MySql.Data.MySqlClient;
 
 namespace Restaurant
 {
-    internal class dataRead
+    internal class DataRead
     {
-        public List<Speisen> GetAlleGerichte(MySqlConnection connection)
+        public List<Gericht> GetAlleGerichte(MySqlConnection connection)
         {
-            var gerichte = new List<Speisen>();
+            var gericht = new List<Gericht>();
             string sqlCommand = "SELECT speiseid, name, preis, vegetarisch FROM Speisekarte";
 
             var cmd = new MySqlCommand(sqlCommand, connection);
@@ -16,15 +16,14 @@ namespace Restaurant
 
             while (reader.Read())
             {
-                gerichte.Add(new Gericht
-                {
-                    Id = Convert.ToInt32(reader["speiseid"]),
-                    Name = Convert.ToString(reader["name"]) ?? "",
-                    Preis = Convert.ToDecimal(reader["preis"]),
-                    Vegetarisch = Convert.ToBoolean(reader["vegetarisch"])
-                });
+                gericht.Add(new Gericht(
+                    Convert.ToInt32(reader["speiseid"]),
+                    Convert.ToString(reader["name"]) ?? "",
+                    Convert.ToDecimal(reader["preis"]),
+                    Convert.ToBoolean(reader["vegetarisch"])
+                ));
             }
-            return gerichte;
+            return gericht;
         }
     }
 }

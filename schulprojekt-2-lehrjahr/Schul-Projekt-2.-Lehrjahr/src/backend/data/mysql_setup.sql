@@ -9,14 +9,8 @@ CREATE TABLE IF NOT EXISTS `Speisekarte` (
     vegetarisch BOOLEAN NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Tisch` (
-    tischid INT AUTO_INCREMENT PRIMARY KEY
-);
-
 CREATE TABLE IF NOT EXISTS `Bestellung` (
-    bestellid INT AUTO_INCREMENT PRIMARY KEY,
-    tischid INT NOT NULL,
-    FOREIGN KEY (tischid) REFERENCES `Tisch` (tischid)
+    bestellid INT AUTO_INCREMENT PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS `Bestellposition` (

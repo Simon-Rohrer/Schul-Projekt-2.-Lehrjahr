@@ -1,46 +1,66 @@
 using Restaurant;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// CORS erlauben, damit das Frontend anfragen darf
-builder.Services.AddCors(options =>
+class Program
 {
-    options.AddDefaultPolicy(policy =>
+    static void Main(string[] args)
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
+        var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
-app.UseCors();
+        // CORS erlauben, damit das Frontend anfragen darf
+        builder.Services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(policy =>
+            {
+                policy.AllowAnyOrigin()
+                      .AllowAnyHeader()
+                      .AllowAnyMethod();
+            });
+        });
 
-// API
-app.MapGet("/api/essen", () =>
-{
-    try
-    {
-        var connector = new dataConnect();
-        var connection = connector.GetConnection();
-        var reader = new dataRead();
-        var liste = reader.GetAlleGerichte(connection);
-        return Results.Ok(liste);
-    }
-    catch (Exception exception)
-    {
-        Console.WriteLine($"Fehler bei /api/essen: {exception.Message}");
-        return Results.Problem(exception.Message);
-    }
-});
+        var app = builder.Build();
+        app.UseCors();
 
-Console.WriteLine("Backend Server läuft auf http://localhost:5000 ...");
-app.Run("http://localhost:5000");
+        // API
+        // Alle Gerichte lesen
+        app.MapGet("/api/essen", () =>
+        {
+            using var connection = new DataConnect().GetConnection();
+            var liste = new DataRead().GetAlleGerichte(connection);
+            return Results.Ok(liste);
+        });
 
-namespace Restaurant
-{
-    public class Gericht
-    {
-        dataConnect dataConnect = new dataConnect();
+        // Neues Gericht speichern
+        app.MapPost("/api/essen", (Gericht gericht) =>
+        {
+            using var connection = new DataConnect().GetConnection();
+            new DataWrite(connection, gericht.Name, gericht.Preis, gericht.Vegetarisch);
+            return Results.Ok();
+        });
+
+        // Gericht ändern
+        app.MapPut("/api/essen/{id}", (int id, Gericht gericht) =>
+        {
+            using var connection = new DataConnect().GetConnection();
+            new DataUpdate(connection, id, gericht.Name, gericht.Preis, gericht.Vegetarisch);
+            return Results.Ok();
+        });
+
+        // Gericht löschen
+        app.MapDelete("/api/essen/{id}", (int id) =>
+        {
+            using var connection = new DataConnect().GetConnection();
+            new DataDelete(connection, id);
+            return Results.Ok();
+        });
+
+        // Bestellung speichern
+        app.MapPost("/api/bestellung", (List<Bestellposition> positionen) =>
+        {
+            using var connection = new DataConnect().GetConnection();
+            new DataBestellung(connection, positionen);
+            return Results.Ok();
+        });
+
+        app.Run("http://localhost:5000");
     }
 }
