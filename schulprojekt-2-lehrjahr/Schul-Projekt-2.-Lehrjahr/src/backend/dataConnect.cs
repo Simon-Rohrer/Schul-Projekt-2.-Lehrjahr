@@ -1,17 +1,17 @@
 using System;
 using MySql.Data.MySqlClient;
 
-namespace Ueb_Datenbankzugriff
+namespace Restaurant
 {
     internal class dataConnect
     {
         public MySqlConnection GetConnection()
         {
-            string connectionString = "Server=localhost;Port=3306;Database=ueb_datenbankzugriff;Uid=root;Pwd=/data/mysql/mysql8.0.33-winx64/bin/mysql.exe;";
-            MySqlConnection con = new MySqlConnection(connectionString);
-            con.Open();
+            string connectionString = "Server=127.0.0.1;Port=3306;Database=Restaurant;Uid=root;Pwd=;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
 
-            return con;
+            return connection;
         }
     }
 }

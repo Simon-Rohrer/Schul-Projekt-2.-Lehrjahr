@@ -1,4 +1,4 @@
-using Ueb_Datenbankzugriff;
+using Restaurant;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,28 +22,25 @@ app.MapGet("/api/essen", () =>
     try
     {
         var connector = new dataConnect();
-        using var con = connector.GetConnection();
+        var connection = connector.GetConnection();
         var reader = new dataRead();
-        var liste = reader.GetAlleGerichte(con);
+        var liste = reader.GetAlleGerichte(connection);
         return Results.Ok(liste);
     }
-    catch (Exception ex)
+    catch (Exception exception)
     {
-        Console.WriteLine($"Fehler bei /api/essen: {ex.Message}");
-        return Results.Problem(ex.Message);
+        Console.WriteLine($"Fehler bei /api/essen: {exception.Message}");
+        return Results.Problem(exception.Message);
     }
 });
 
 Console.WriteLine("Backend Server läuft auf http://localhost:5000 ...");
 app.Run("http://localhost:5000");
 
-namespace Ueb_Datenbankzugriff
+namespace Restaurant
 {
     public class Gericht
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = "";
-        public decimal Preis { get; set; }
-        public bool Vegetarisch { get; set; }
+        dataConnect dataConnect = new dataConnect();
     }
 }

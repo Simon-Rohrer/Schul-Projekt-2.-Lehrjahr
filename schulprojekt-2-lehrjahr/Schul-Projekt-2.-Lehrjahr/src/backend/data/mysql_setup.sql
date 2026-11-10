@@ -1,16 +1,29 @@
 CREATE DATABASE IF NOT EXISTS `Restaurant`;
-    
 
-CREATE TABLE `Essensliste` (
-    listenid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    essensname VARCHAR(255) NOT NULL,
-    preis DECIMAL(10, 2) NOT NULL,
+USE `Restaurant`;
+
+CREATE TABLE IF NOT EXISTS `Speisekarte` (
+    speiseid INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    preis DECIMAL(6, 2) NOT NULL,
     vegetarisch BOOLEAN NOT NULL
 );
 
-CREATE TABLE `Bestellungen` (
-    bestellid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    listenid INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Tisch` (
+    tischid INT AUTO_INCREMENT PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS `Bestellung` (
+    bestellid INT AUTO_INCREMENT PRIMARY KEY,
+    tischid INT NOT NULL,
+    FOREIGN KEY (tischid) REFERENCES `Tisch` (tischid)
+);
+
+CREATE TABLE IF NOT EXISTS `Bestellposition` (
+    positionsid INT AUTO_INCREMENT PRIMARY KEY,
+    bestellid INT NOT NULL,
+    speiseid INT NOT NULL,
     menge INT NOT NULL,
-    FOREIGN KEY (listenid) REFERENCES Essensliste(listenid)
+    FOREIGN KEY (bestellid) REFERENCES `Bestellung` (bestellid),
+    FOREIGN KEY (speiseid) REFERENCES `Speisekarte` (speiseid)
 );
